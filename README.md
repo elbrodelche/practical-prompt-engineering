@@ -161,7 +161,7 @@ Tell the model to return data in a strict format (JSON, YAML, tables, XML).
 
 **Example:**
 
-```json
+```bash
 Extract the following data and return as valid JSON:
 {
   "product_name": "",
@@ -308,7 +308,7 @@ Determine which tools are needed, execute them, then deliver the final result.
 
 ### 3.1 Few-Shot + Structured Output
 
-```json
+```bash
 You categorize user feedback into groups.
 Respond ONLY in JSON.
 
@@ -367,7 +367,7 @@ Provide only the corrected version.
 
 ### 3.4 Persona + Few-Shot + Structured Output
 
-```json
+```bash
 You are a network security specialist.
 
 Categorize the following events as: HIGH, MEDIUM, or LOW priority.
