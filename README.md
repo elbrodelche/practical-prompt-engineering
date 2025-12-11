@@ -27,19 +27,37 @@ Your practical guide to <code>mastering prompt engineering</code> with LLMs. Bui
 
 ## Table of Contents
 
-- [Core Prompting Techniques](#-1-core-prompting-techniques)
-- [Advanced Prompting Techniques](#-2-advanced-prompting-techniques)
-- [Combined Prompt Examples](#-3-combined-prompt-examples)
-- [Technique Summary](#-4-technique-summary)
+- [Technique Summary](#-1-technique-summary)
+- [Core Prompting Techniques](#-2-core-prompting-techniques)
+- [Advanced Prompting Techniques](#-3-advanced-prompting-techniques)
+- [Combined Prompt Examples](#-4-combined-prompt-examples)
 - [Best Practices for Production](#-5-best-practices-for-production)
 - [Common Pitfalls](#%EF%B8%8F-6-common-pitfalls)
 - [Tips for Developers](#%EF%B8%8F-tips-for-developers)
 
 ---
 
-## 📌 1. Core Prompting Techniques
+## 📘 1. Technique Summary
 
-### 1.1 Standard Prompt
+| Technique | Purpose | Best For | Complexity |
+|-----------|---------|----------|------------|
+| Standard Prompt | Direct instruction | Simple tasks | ⭐ |
+| Zero-Shot | No examples | General Q&A | ⭐ |
+| One-Shot | One example | Basic formatting | ⭐⭐ |
+| Few-Shot | Multiple examples | Structured outputs, custom logic | ⭐⭐ |
+| Context Placement | Organizing information | Tasks with background context | ⭐⭐ |
+| Structured Output | Machine-readable format | APIs, automation, data extraction | ⭐⭐ |
+| Chain-of-Thought | Step-by-step reasoning | Logic, math, complex reasoning | ⭐⭐⭐ |
+| Delimiters | Clear separation | Code, logs, long prompts, security | ⭐⭐ |
+| Persona Prompting | Control style/expertise | Domain-specific tasks | ⭐⭐ |
+| Self-Consistency | Multiple reasoning paths | High-accuracy requirements | ⭐⭐⭐ |
+| ReAct | Reasoning + Acting | Agent systems, tool use | ⭐⭐⭐⭐ |
+
+---
+
+## 📌 2. Core Prompting Techniques
+
+### 2.1 Standard Prompt
 
 A direct instruction to the model. No examples or special formatting.
 
@@ -53,7 +71,7 @@ Convert this article into a 50-word summary.
 
 ---
 
-### 1.2 Zero-Shot Prompting
+### 2.2 Zero-Shot Prompting
 
 The model receives *no examples* — only the instruction.
 
@@ -70,7 +88,7 @@ Describe how neural networks work using everyday language.
 
 ---
 
-### 1.3 One-Shot Prompting
+### 2.3 One-Shot Prompting
 
 You provide **one** example before giving the real task.
 
@@ -92,7 +110,7 @@ Sentiment:
 
 ---
 
-### 1.4 Few-Shot Prompting
+### 2.4 Few-Shot Prompting
 
 Provide **multiple examples** to teach the model an input/output pattern.
 
@@ -120,7 +138,7 @@ Label:
 
 ---
 
-### 1.5 Context Placement
+### 2.5 Context Placement
 
 Structuring your prompt so the model understands what information is important.
 
@@ -146,9 +164,9 @@ Tickets:
 
 ---
 
-## 🚀 2. Advanced Prompting Techniques
+## 🚀 3. Advanced Prompting Techniques
 
-### 2.1 Structured Output
+### 3.1 Structured Output
 
 Tell the model to return data in a strict format (JSON, YAML, tables, XML).
 
@@ -175,7 +193,7 @@ Extract the following data and return as valid JSON:
 
 ---
 
-### 2.2 Chain-of-Thought (CoT)
+### 3.2 Chain-of-Thought (CoT)
 
 Ask the model to think step-by-step before providing the final answer.
 
@@ -204,7 +222,7 @@ Show your reasoning before providing the final answer.
 
 ---
 
-### 2.3 Delimiters
+### 3.3 Delimiters
 
 Use symbols to clearly separate instructions, data, or context.
 
@@ -238,7 +256,7 @@ Extract the key insights and themes.
 
 ---
 
-### 2.4 Persona / Role Prompting
+### 3.4 Persona / Role Prompting
 
 Assign the model a specific role or expertise level.
 
@@ -259,7 +277,7 @@ Use relatable comparisons and keep technical terms minimal.
 
 ---
 
-### 2.5 Self-Consistency
+### 3.5 Self-Consistency
 
 Generate multiple reasoning paths and select the most consistent answer.
 
@@ -282,7 +300,7 @@ Show all three reasoning methods, then provide the final conclusion.
 
 ---
 
-### 2.6 ReAct (Reasoning + Acting)
+### 3.6 ReAct (Reasoning + Acting)
 
 Combine reasoning with tool/API calls in an iterative loop.
 
@@ -304,9 +322,9 @@ Determine which tools are needed, execute them, then deliver the final result.
 
 ---
 
-## 🧩 3. Combined Prompt Examples
+## 🧩 4. Combined Prompt Examples
 
-### 3.1 Few-Shot + Structured Output
+### 4.1 Few-Shot + Structured Output
 
 ```bash
 You categorize user feedback into groups.
@@ -332,7 +350,7 @@ Output format:
 
 ---
 
-### 3.2 Role + CoT
+### 4.2 Role + CoT
 
 ```text
 Act as an experienced database administrator.
@@ -351,7 +369,7 @@ Include:
 
 ---
 
-### 3.3 Delimiters + Context Placement
+### 4.3 Delimiters + Context Placement
 
 ```text
 Task: Fix spelling errors in the text between the --- markers.
@@ -365,7 +383,7 @@ Provide only the corrected version.
 
 ---
 
-### 3.4 Persona + Few-Shot + Structured Output
+### 4.4 Persona + Few-Shot + Structured Output
 
 ```bash
 You are a network security specialist.
@@ -391,24 +409,6 @@ Return as JSON:
   "recommended_action": ""
 }
 ```
-
----
-
-## 📘 4. Technique Summary
-
-| Technique | Purpose | Best For | Complexity |
-|-----------|---------|----------|------------|
-| Standard Prompt | Direct instruction | Simple tasks | ⭐ |
-| Zero-Shot | No examples | General Q&A | ⭐ |
-| One-Shot | One example | Basic formatting | ⭐⭐ |
-| Few-Shot | Multiple examples | Structured outputs, custom logic | ⭐⭐ |
-| Context Placement | Organizing information | Tasks with background context | ⭐⭐ |
-| Structured Output | Machine-readable format | APIs, automation, data extraction | ⭐⭐ |
-| Chain-of-Thought | Step-by-step reasoning | Logic, math, complex reasoning | ⭐⭐⭐ |
-| Delimiters | Clear separation | Code, logs, long prompts, security | ⭐⭐ |
-| Persona Prompting | Control style/expertise | Domain-specific tasks | ⭐⭐ |
-| Self-Consistency | Multiple reasoning paths | High-accuracy requirements | ⭐⭐⭐ |
-| ReAct | Reasoning + Acting | Agent systems, tool use | ⭐⭐⭐⭐ |
 
 ---
 
